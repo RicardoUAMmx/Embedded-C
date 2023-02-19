@@ -29,7 +29,7 @@ int hex2dec( char c ){
 }
 
 int dec2short( int dec ){
-	if( dec >= 65536 ){
+	if( dec >= 32768 ){
 		return -( 65536 - dec );
 	} else {
 		return dec;
@@ -46,7 +46,7 @@ int main( int argc, char **args ){
 			for( int i = 3 ; i >= 0 ; i-- ){
 				value += hex2dec( fgetc( fp ) )*pwri( 16, i );
 			}
-			printf( "%d%c", dec2short( value ), fgetc( fp ) );
+			printf( "%d%c", dec2short ( value ), fgetc( fp ) );
 			value = 0;
 		}
 		fclose( fp );

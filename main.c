@@ -1,6 +1,8 @@
 #include <stdio.h>
+#include <math.h>
 #include <stdlib.h>
-#define SINE_TABLE_SIZE 48
+#define PERIOD 48
+#define AMPLITUDE 10000
 
 char nibble2hex( char value ){
 	switch( value ){
@@ -48,18 +50,17 @@ void short2hex( short value, char *string ){
 	}
 }
 
+short fx_sin( double amplitude, double period, double x ){
+	amplitude = amplitude/10;
+	short result = ( short )amplitude*sin( 2*M_PI*( 1/period )*x );
+	return 10*result;
+}
+
 int main( int argc, char **argv ){
-	short sinetable[ SINE_TABLE_SIZE ] = {
-		1300, 2580, 3820, 5000, 6080, 7070, 7930, 8660,
-		9230, 9650, 9910, 10000, 9910, 9650, 9230, 8660,
-		7930, 7070, 6080, 5000, 3820, 2580, 1300, 0,
-		-1300, -2580, -3820, -5000, -6080, -7070, -7930, -8660,
-		-9230, -9650, -9910, -10000, -9910, -9650, -9230, -8660,
-		-7930, -7070, -6080, -5000, -3820, -2580, -1300, 0
-	};
 	char *shortMessage = ( char* )malloc( sizeof( char )*10 );
-	for( int i=0 ; i < SINE_TABLE_SIZE ; i++ ){
-		short2hex( sinetable[ i ], shortMessage );
+	for( int i=1 ; i <= PERIOD ; i++ ){
+		printf( "%hd,", 4*fx_sin( AMPLITUDE, PERIOD, i ) );
+		short2hex( 4*fx_sin( AMPLITUDE, PERIOD, i ), shortMessage );
 		printf( "%s", shortMessage );
 		printf( "\n" );
 	}

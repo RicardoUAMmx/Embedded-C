@@ -1,0 +1,70 @@
+% -----------------------------------------------------------------------------
+% Start File: predoc/tcb.tex
+% Author: Ricardo Hernández Osorio.
+% Created: Tuesday, June-28-2022.
+% Description: Predocument code inputed in main.
+% -----------------------------------------------------------------------------
+
+% NewEnvironment: blankbox {{{
+\newtcolorbox
+[]
+{blankbox}[2][viouaml]
+{% Start colorbox options
+  empty,
+  size=small,
+  coltitle=black,
+  fonttitle=\bfseries,
+  titlerule style={
+	#1,line width=2pt,arrows={
+	  Fast Triangle[]. Fast Triangle[]. Triangle Cap[] -
+	  Triangle Cap[]. Fast Triangle[]. Fast Triangle[]
+	}
+  }, adjusted title={#2}
+}% End colorbox options
+% End: NewEnvironment }}}
+% NewTcolorBox: titlereport {{{
+\newtcolorbox
+[]
+{titlereport}[1][viouaml]
+{% Start colorbox options
+  bicolor,sidebyside,valign=center,
+  lefthand width=3cm,height=4cm,
+  sharp corners,boxrule=1pt,
+  colback=#1!50!black,
+  colbacklower=#1!10,
+  colframe=#1!50!black
+}% End colorbox options
+% End: NewTcolorBox }}}
+% NewTcolorBox: basicbox {{{
+\newtcolorbox
+[]
+{basicbox}[2][greuaml]
+{% Start colorbox options
+  colback=#1!10,colframe=#1,
+  boxrule=1pt,
+  fonttitle=\bfseries,
+  title=#2
+}% End colorbox options
+% NewTcolorBox: basicbox }}}
+% NewTcolorBox: introreport {{{
+\newtcolorbox
+[]
+{introreport}[2][viouaml]
+{% Start colorbox options
+  empty,coltitle=black,
+  fonttitle=\bfseries,fontupper=\itshape,
+  halign title=center,
+  center title,center,
+  width=(9\linewidth)/10,
+  titlerule style={
+	#1,line width=2pt,arrows={
+	  Fast Triangle[]. Fast Triangle[]. Triangle Cap[] -
+	  Triangle Cap[]. Fast Triangle[]. Fast Triangle[]
+	}
+  }, adjusted title={#2}
+}% End colorbox options
+% End: NewTcolorBox }}}
+% -----------------------------------------------------------------------------
+% End File: predoc/tcb.tex
+% -----------------------------------------------------------------------------
+

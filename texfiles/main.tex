@@ -1,0 +1,98 @@
+% -----------------------------------------------------------------------------
+% Author: Ricardo Hernández Osorio.
+% Created: Saturday, February-18-2023
+% Description: Template to create plots.
+% -----------------------------------------------------------------------------
+\documentclass[multi=wrapper,crop,tikz]{standalone}
+% Usepackage loaded {{{
+% Inputenc, Fontenc, Babel, Lmodern {{{
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,mexico,es-noindentfirst]{babel}
+\usepackage{lmodern}
+% End: Inputenc, Fontenc, Babel, Lmodern }}}
+% Mathtools, Amssymb {{{
+\usepackage{mathtools}
+\usepackage{amssymb}
+% End: Mathtools, Amssymb }}}
+% Graphicx {{{
+\usepackage{graphicx}
+% \graphicspath{ {./images/} }
+% End: Graphicx }}}
+% Tikz libraries {{{
+\usetikzlibrary{angles,intersections,calc,babel}
+\usetikzlibrary{patterns}
+\usetikzlibrary{positioning}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{matrix}
+\usetikzlibrary{backgrounds}
+\usetikzlibrary{fit}
+% End: Tikz libraries }}}
+% Tcb and libraries {{{
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+\newenvironment{wrapper}{}{}
+\tcbset{before=\begin{wrapper},after=\end{wrapper}}
+\tcbset{colback=violet!20,colframe=black!80!violet,width=12cm}
+% End: Tcb and libraries }}}
+% PGFplots {{{
+\usepackage{pgfplots}
+\pgfplotsset{
+  compat=1.17,
+  width=10cm,
+  table/search path={../data}
+}
+% End: PGFplots }}}
+% Inputs loaded {{{
+\input{preamble/colors.tex}
+\input{preamble/tcb.tex}
+% End: Inputs loaded }}}
+% End: Usepackage loaded }}}
+\begin{document}
+\begin{wrapper}
+  \begin{tcolorbox}
+	[tikz upper,fonttitle=\bfseries,title={Entero con signo}]
+	\begin{axis}[
+	  xmin=-1,xmax=50,
+	  scaled ticks=false,
+	  minor tick=data,
+	  cycle list name=exotic,
+	  axis y line=left,
+	  axis x line=center,
+	  xticklabel=\empty,
+	  nodes near coords,
+	  nodes near coords align=vertical,
+	  node near coord style={font=\tiny,rotate=90,anchor=west}
+	]
+	  \addplot+ [only marks,point meta=explicit symbolic] table
+	  [col sep=comma, x expr=\coordindex, y index=0, meta index=1]
+	  {sintable.dat};
+	\end{axis}
+  \end{tcolorbox}
+\end{wrapper}
+
+\begin{wrapper}
+  \begin{tcolorbox}
+	[tikz upper,fonttitle=\bfseries,title={Entero con signo}]
+	\begin{axis}[
+	  xmin=-1,xmax=50,
+	  scaled ticks=false,
+	  minor tick=data,
+	  cycle list name=exotic,
+	  axis y line=left,
+	  axis x line=center,
+	  xticklabel=\empty,
+	  nodes near coords,
+	  nodes near coords align=vertical,
+	  node near coord style={font=\tiny,rotate=90,anchor=west}
+	]
+	  \addplot+ [only marks,point meta=explicit symbolic] table
+	  [col sep=comma, x expr=\coordindex, y index=0, meta index=1]
+	  {sintable_over.dat};
+	\end{axis}
+  \end{tcolorbox}
+\end{wrapper}
+
+\end{document}
+
+
