@@ -1,0 +1,23 @@
+
+\begin{wrapper}
+  \begin{tcolorbox}
+	[tikz upper,fonttitle=\bfseries,title={Unoverflow signed short ACC}]
+	\begin{axis}[
+	  xmin=-1,xmax=50,
+	  scaled ticks=false,
+	  minor tick=data,
+	  cycle list name=exotic,
+	  axis y line=left,
+	  axis x line=center,
+	  xticklabel=\empty,
+	  nodes near coords,
+	  nodes near coords align=vertical,
+	  node near coord style={font=\tiny,rotate=90,anchor=west}
+	]
+	  \addplot+ [only marks,point meta=explicit symbolic] table
+	  [col sep=comma, x expr=\coordindex, y index=0, meta index=1]
+	  {sintable.dat};
+	\end{axis}
+  \end{tcolorbox}
+\end{wrapper}
+

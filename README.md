@@ -4,4 +4,12 @@
 
 **Love at first sight trough the bits**
 
-# Embedded-C
+# Introduction
+Given $N$ bits we can choose between `signed` or `unsigned` integer types:
+
+| Type     | Range    |
+|----------|----------|
+| unsigned | $-2^{N-1}$ to $2^{N-1}-1$ |
+| signed   | $0$ to $2^N-1$|
+
+![Unoverflow Graph](images/main.pdf)
